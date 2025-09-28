@@ -6,10 +6,10 @@ from django.core.validators import MinValueValidator
 # ---------------- Village ----------------
 
 class Village(models.Model):
-    state_name = models.CharField(max_length=100)
-    district_name = models.CharField(max_length=100)
+    state_name = models.CharField(max_length=100,  default="Unknown")
+    district_name = models.CharField(max_length=100, default="Unknown")
     village_id = models.AutoField(primary_key=True)
-    village_name = models.CharField(max_length=255)
+    village_name = models.CharField(max_length=255, default="Unknown")
     latitude = models.DecimalField(max_digits=9, decimal_places=6)
     longitude = models.DecimalField(max_digits=9, decimal_places=6)
     population = models.IntegerField(null=True, blank=True)
@@ -43,9 +43,9 @@ class HealthReport(models.Model):
     water_source = models.CharField(max_length=100)
     treatment_given = models.TextField()
     asha_worker_id = models.IntegerField()
-    state = models.CharField(max_length=100)
-    district = models.CharField(max_length=100)
-    village = models.CharField(max_length=100)
+    state = models.CharField(max_length=100, default="Unknown")
+    district = models.CharField(max_length=100, default="Unknown")
+    village = models.CharField(max_length=100, default="Unknown")
     water_quality = models.CharField(
         max_length=10, 
         choices=WATER_QUALITY_CHOICES, 
